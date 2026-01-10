@@ -6,6 +6,8 @@ from torchvision import transforms
 from PIL import Image
 
 from utils.nutrition import get_nutrition
+from utils.meal_gen import generate_recipe
+
 
 @st.cache_resource
 def load_model():
@@ -94,8 +96,35 @@ with tab1:
             st.warning("Nutrition data not found for this food.")
 
 with tab2:
-    st.header("Meal Generator from Ingredients")
-    st.write("Coming soon...")
+    st.header("🍳 AI Meal Generator")
+
+    ingredients = st.text_area(
+        "Enter available ingredients (comma separated)",
+        placeholder="e.g. rice, tomato, onion, egg"
+    )
+
+    meal_type = st.selectbox(
+        "Type of meal",
+        ["Breakfast", "Lunch", "Dinner", "Snack"]
+    )
+
+    diet = st.selectbox(
+        "Diet preference",
+        ["Any", "Vegetarian", "Non-Vegetarian"]
+    )
+
+    if st.button("Generate Recipe"):
+        if not ingredients.strip():
+            st.warning("Please enter ingredients.")
+        else:
+            with st.spinner("Generating recipe using AI..."):
+                recipe = generate_recipe(ingredients, meal_type, diet)
+
+            st.success("🍽️ Generated Recipe")
+            st.markdown(recipe)
+            st.caption("⚠️ Recipe is AI-generated using Google Gemini.")
+
+
 
 with tab3:
     st.header("Food Plating & Portion Size Visualizer")
