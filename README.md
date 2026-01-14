@@ -50,16 +50,17 @@ More training and fine-tuning are required for accurate recognition of complex o
 ```bash
 git clone https://github.com/asiiyaah/Smart-nutrition-assistant-Ai
 cd smart-nutrition-assistant
+```
 
 ### 2️⃣ Create a Virtual Environment (Recommended)
 ```bash
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
-
+```
 ### 3️⃣ Install dependencies
 ```bash
 pip install -r requirements.txt
-
+```
 ### 4️⃣ Set Environment Variables
 
 Set your **Google Gemini API key**.
@@ -67,12 +68,12 @@ Set your **Google Gemini API key**.
 **Linux / macOS**
 ```bash
 export GOOGLE_API_KEY="your_api_key_here"
-
+``
 
 5️⃣ Run the application
 ```bash
 streamlit run app.py
-
+```
 
 The app will open in your browser.
 
