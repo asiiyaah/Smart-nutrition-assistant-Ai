@@ -77,15 +77,6 @@ streamlit run app.py
 
 The app will open in your browser.
 
-# 📁 Project Structure
-├── app.py
-├── utils/
-│   ├── nutrition.py
-│   ├── meal_gen.py
-│   └── portion_vis.py
-├── requirements.txt
-└── README.md
-
 # ⚠️ Limitations
 
 • Image-based calorie estimation works best for single food items
