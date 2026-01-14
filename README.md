@@ -68,7 +68,7 @@ Set your **Google Gemini API key**.
 **Linux / macOS**
 ```bash
 export GOOGLE_API_KEY="your_api_key_here"
-``
+```
 
 5️⃣ Run the application
 ```bash
@@ -88,23 +88,23 @@ The app will open in your browser.
 
 # ⚠️ Limitations
 
-•Image-based calorie estimation works best for single food items
+• Image-based calorie estimation works best for single food items
 
-•Complex or mixed dishes may not be accurately recognized
+• Complex or mixed dishes may not be accurately recognized
 
-•Nutrition values are approximate
+• Nutrition values are approximate
 
-•Image model uses a pre-trained dataset and is not fine-tuned
+• Image model uses a pre-trained dataset and is not fine-tuned
 
-#🔮 Future Improvements
+# 🔮 Future Improvements
 
-•Fine-tune the image model for complex dishes
+• Fine-tune the image model for complex dishes
 
-•Add daily meal tracking
+• Add daily meal tracking
 
-•Personalized diet recommendations
+• Personalized diet recommendations
 
-•Portion size estimation
+• Portion size estimation
 
 # 👤 Author
 Developed by **Asiya Muhammed Sali Thachavallath**,  
