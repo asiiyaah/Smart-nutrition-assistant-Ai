@@ -68,15 +68,22 @@ Set your **Google Gemini API key**.
 **Linux / macOS**
 ```bash
 export GOOGLE_API_KEY="your_api_key_here"
+<<<<<<< HEAD
 ``
 
 5️⃣ Run the application
+=======
+```
+
+### 5️⃣ Run the application
+>>>>>>> 937b7808c5bbda855d17c61247bc7aa0900dae2e
 ```bash
 streamlit run app.py
 ```
 
 The app will open in your browser.
 
+<<<<<<< HEAD
 # 📁 Project Structure
 ├── app.py
 ├── utils/
@@ -105,6 +112,27 @@ The app will open in your browser.
 •Personalized diet recommendations
 
 •Portion size estimation
+=======
+# ⚠️ Limitations
+
+• Image-based calorie estimation works best for single food items
+
+• Complex or mixed dishes may not be accurately recognized
+
+• Nutrition values are approximate
+
+• Image model uses a pre-trained dataset and is not fine-tuned
+
+# 🔮 Future Improvements
+
+• Fine-tune the image model for complex dishes
+
+• Add daily meal tracking
+
+• Personalized diet recommendations
+
+• Portion size estimation
+>>>>>>> 937b7808c5bbda855d17c61247bc7aa0900dae2e
 
 # 👤 Author
 Developed by **Asiya Muhammed Sali Thachavallath**,  
