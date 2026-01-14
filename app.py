@@ -3,10 +3,12 @@ import streamlit as st
 import torch
 from torchvision.models import resnet50, ResNet50_Weights
 from torchvision import transforms
-from PIL import Image
-
 from utils.nutrition import get_nutrition
 from utils.meal_gen import generate_recipe
+from utils.portion_vis import (
+    classify_foods,
+    nutrition_feedback
+)
 
 
 @st.cache_resource
@@ -42,12 +44,81 @@ This app helps you:
 """)
 
 tab1, tab2, tab3 = st.tabs([
-    "🔍 Calories Finder",
+    "🥗 Smart Meal Analyzer",
     "🍳 Meal Generator",
-    "🖼️ Portion Visualizer"
+    "🔍 Calories Finder"
 ])
 
 with tab1:
+    st.header("🥗 Smart Meal Analyzer")
+
+    st.markdown(
+        """
+        This feature helps you understand **how balanced your meal is**.
+
+        👉 Enter the foods you plan to eat, and the system will:
+        - Classify each food into nutrition groups  
+        - Identify missing or excess nutrients  
+        - Suggest simple improvements for a healthier meal  
+
+        This analysis is AI-driven and focuses on **practical, everyday meals**.
+        """
+    )
+
+    food_input = st.text_input(
+        "Enter foods you plan to eat (comma separated)",
+        placeholder="rice, brinjal fry, mashed potato, almonds"
+    )
+
+    if st.button("Analyze Meal"):
+        foods = [f.strip() for f in food_input.split(",") if f.strip()]
+
+        if not foods:
+            st.warning("Please enter at least one food.")
+        else:
+            with st.spinner("Analyzing meal..."):
+                food_categories = classify_foods(foods)
+
+            st.subheader("🍽️ Food Categories")
+            for food, category in food_categories.items():
+                st.write(f"• **{food.title()}** → {category.capitalize()}")
+
+            with st.spinner("Generating nutrition feedback..."):
+                feedback = nutrition_feedback(food_categories)
+
+            st.subheader("🧠 Nutrition Feedback & Suggestions")
+            st.markdown(feedback)
+
+with tab2:
+    st.header("🍳 AI Meal Generator")
+
+    ingredients = st.text_area(
+        "Enter available ingredients (comma separated)",
+        placeholder="e.g. rice, tomato, onion, egg"
+    )
+
+    meal_type = st.selectbox(
+        "Type of meal",
+        ["Breakfast", "Lunch", "Dinner", "Snack"]
+    )
+
+    diet = st.selectbox(
+        "Diet preference",
+        ["Any", "Vegetarian", "Non-Vegetarian"]
+    )
+
+    if st.button("Generate Recipe"):
+        if not ingredients.strip():
+            st.warning("Please enter ingredients.")
+        else:
+            with st.spinner("Generating recipe using AI..."):
+                recipe = generate_recipe(ingredients, meal_type, diet)
+
+            st.success("🍽️ Generated Recipe")
+            st.markdown(recipe)
+            st.caption("⚠️ Recipe is AI-generated using Google Gemini.")
+
+with tab3:
     st.header("Calories & Nutrition Finder")
 
     uploaded_file = st.file_uploader(
@@ -95,37 +166,7 @@ with tab1:
         else:
             st.warning("Nutrition data not found for this food.")
 
-with tab2:
-    st.header("🍳 AI Meal Generator")
-
-    ingredients = st.text_area(
-        "Enter available ingredients (comma separated)",
-        placeholder="e.g. rice, tomato, onion, egg"
-    )
-
-    meal_type = st.selectbox(
-        "Type of meal",
-        ["Breakfast", "Lunch", "Dinner", "Snack"]
-    )
-
-    diet = st.selectbox(
-        "Diet preference",
-        ["Any", "Vegetarian", "Non-Vegetarian"]
-    )
-
-    if st.button("Generate Recipe"):
-        if not ingredients.strip():
-            st.warning("Please enter ingredients.")
-        else:
-            with st.spinner("Generating recipe using AI..."):
-                recipe = generate_recipe(ingredients, meal_type, diet)
-
-            st.success("🍽️ Generated Recipe")
-            st.markdown(recipe)
-            st.caption("⚠️ Recipe is AI-generated using Google Gemini.")
 
 
 
-with tab3:
-    st.header("Food Plating & Portion Size Visualizer")
-    st.write("Coming soon...")
+
