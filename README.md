@@ -70,7 +70,7 @@ Set your **Google Gemini API key**.
 export GOOGLE_API_KEY="your_api_key_here"
 ```
 
-5️⃣ Run the application
+### 5️⃣ Run the application
 ```bash
 streamlit run app.py
 ```
