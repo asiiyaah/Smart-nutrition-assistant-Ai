@@ -68,15 +68,10 @@ Set your **Google Gemini API key**.
 **Linux / macOS**
 ```bash
 export GOOGLE_API_KEY="your_api_key_here"
-<<<<<<< HEAD
-``
-
-5️⃣ Run the application
-=======
 ```
 
+
 ### 5️⃣ Run the application
->>>>>>> 937b7808c5bbda855d17c61247bc7aa0900dae2e
 ```bash
 streamlit run app.py
 ```
@@ -132,7 +127,6 @@ The app will open in your browser.
 • Personalized diet recommendations
 
 • Portion size estimation
->>>>>>> 937b7808c5bbda855d17c61247bc7aa0900dae2e
 
 # 👤 Author
 Developed by **Asiya Muhammed Sali Thachavallath**,  
