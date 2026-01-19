@@ -83,7 +83,7 @@ streamlit run app.py
 
 The app will open in your browser.
 
-<<<<<<< HEAD
+
 # 📁 Project Structure
 ├── app.py
 ├── utils/
@@ -112,7 +112,7 @@ The app will open in your browser.
 •Personalized diet recommendations
 
 •Portion size estimation
-=======
+
 # ⚠️ Limitations
 
 • Image-based calorie estimation works best for single food items
